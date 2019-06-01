@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+</head>
+<body>
+<script src="../lib/sessions.min.js"></script>
+<script type="application/javascript">
+    var session = Session.init({domain:window.location.hostname});
+    console.log(session.getSession())
+</script>
+</body>
+</html>
