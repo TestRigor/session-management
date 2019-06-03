@@ -1,6 +1,6 @@
 (function (window, document) {
 
-  var COOKIE = "ts-sessions";
+  var COOKIE = "TR-SESSION-ID";
   var SESSION = "Session";
 
   function getCookie() {
@@ -15,7 +15,16 @@
   }
 
   function createCookie() {
-    document.cookie = COOKIE + "=" + generateID() + ";domain=" + window.location.hostname;
+    document.cookie = COOKIE + "=" + generateID() + ";domain=" + currentDomain();
+  }
+
+  function currentDomain() {
+    var hostname = window.location.hostname;
+    var segments = hostname.split(".");
+    if (segments && segments.length > 1) {
+      return segments[segments.length - 2] + "." + segments[segments.length - 1];
+    }
+    return hostname;
   }
 
   function generateID() {
