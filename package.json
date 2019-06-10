@@ -1,0 +1,27 @@
+{
+  "name": "tr-sessions",
+  "version": "0.0.1",
+  "description": "Minimal session management module.",
+  "license": "MIT",
+  "repository": "https://github.com/TestRigor/session-management",
+  "scripts": {
+  },
+  "author": {
+    "name": "TestRigor",
+    "email": "npm@testrigor.com",
+    "url": "https://testrigor.ai/"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "session",
+    "testrigor.ai",
+    "testrigor",
+    "client"
+  ],
+  "main": "index.js"
+}
