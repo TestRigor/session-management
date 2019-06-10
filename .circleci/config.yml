@@ -11,9 +11,9 @@ jobs:
 
 workflows:
   version: 2
-  deploy:
+  publish:
     jobs:
-      - deploy:
+      - publish:
           filters:
             branches:
               only: master
