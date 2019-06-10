@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  aws-s3: circleci/aws-s3@1.0.10
 jobs:
   publish:
     docker:
@@ -8,12 +10,30 @@ jobs:
       - attach_workspace: { at: . }
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
       - run: npm publish .
+  cdn:
+    docker:
+      - image: 'circleci/python:2.7'
+    steps:
+      - checkout
+      - run:
+          name: Change Name
+          command: |
+            cp index.js session-management.js
+      - aws-s3/copy:
+          from: tr-sessions.js
+          to: 's3://${BUCKET}/session-management.js'
+          arguments: |
+            --acl public-read
 
 workflows:
   version: 2
   publish:
     jobs:
       - publish:
+          filters:
+            branches:
+              only: master
+      - cdn:
           filters:
             branches:
               only: master
