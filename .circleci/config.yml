@@ -20,7 +20,7 @@ jobs:
           command: |
             cp index.js session-management.js
       - aws-s3/copy:
-          from: tr-sessions.js
+          from: session-management.js
           to: 's3://${BUCKET}/session-management.js'
           arguments: |
             --acl public-read
