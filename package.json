@@ -1,5 +1,5 @@
 {
-  "name": "tr-sessions",
+  "name": "session-management-js",
   "version": "0.0.1",
   "description": "Minimal session management module.",
   "license": "MIT",
