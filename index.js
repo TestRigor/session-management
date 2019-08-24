@@ -8,7 +8,7 @@
     var length = cookies.length;
     for (var i = 0; i < length; i++) {
       var cookie = cookies[i].split("=");
-      if (cookie.length && cookie[0] === COOKIE) {
+      if (cookie.length && cookie[0].trim() === COOKIE) {
         return cookie[1];
       }
     }
@@ -43,6 +43,10 @@
     }
   }
 
+  function recreateSession() {
+    createCookie();
+  }
+
   function getSession() {
     return getCookie();
   }
@@ -50,6 +54,7 @@
   init();
 
   window[SESSION] = {
-    getSession: getSession
+    getSession: getSession,
+    recreateSession: recreateSession
   }
 })(window, document);
