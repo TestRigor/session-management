@@ -2,6 +2,7 @@
 
   var COOKIE = "TR-SESSION-ID";
   var SESSION = "Session";
+  const ipRegex = "((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}";
 
   function getCookie() {
     var cookies = document.cookie.split(";");
@@ -21,7 +22,7 @@
   function currentDomain() {
     var hostname = window.location.hostname;
     var segments = hostname.split(".");
-    if (segments && segments.length > 1) {
+    if (!hostname.match(ipRegex) && segments && segments.length > 1) {
       return segments[segments.length - 2] + "." + segments[segments.length - 1];
     }
     return hostname;
