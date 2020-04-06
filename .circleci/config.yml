@@ -12,13 +12,18 @@ jobs:
       - run: npm publish .
   cdn:
     docker:
-      - image: 'circleci/python:2.7'
+      - image: 'circleci/python:2.7-node'
     steps:
       - checkout
       - run:
+          name: npm install and build
+          command: |
+            npm install
+            npm run build
+      - run:
           name: Change Name
           command: |
-            cp index.js session-management.js
+            cp lib/sessions.min.js session-management.js
       - aws-s3/copy:
           from: session-management.js
           to: 's3://${BUCKET}/session-management.js'
