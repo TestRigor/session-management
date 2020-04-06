@@ -1,6 +1,6 @@
 {
   "name": "session-management-js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Minimal session management module.",
   "license": "MIT",
   "repository": "https://github.com/TestRigor/session-management",
