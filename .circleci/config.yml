@@ -8,6 +8,11 @@ jobs:
     steps:
       - checkout
       - attach_workspace: { at: . }
+      - run:
+          name: npm install and build
+          command: |
+            npm install
+            npm run build
       - run: npm config set "//registry.npmjs.org/:_authToken" $NPM_AUTH
       - run: npm publish .
   cdn:
