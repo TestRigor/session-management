@@ -4,7 +4,7 @@ const config = {
   entry: __dirname + '/src/index.js',
   output: {
     path: __dirname + '/lib',
-    library: 'Session',
+    library: 'TestRigorSession',
     libraryExport: 'default',
     libraryTarget: 'window'
   },
