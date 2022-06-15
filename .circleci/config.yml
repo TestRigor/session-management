@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  aws-s3: circleci/aws-s3@1.0.10
+  azure-cli: circleci/azure-cli@1.2.2
 jobs:
   publish:
     docker:
@@ -15,6 +15,7 @@ jobs:
       - image: 'circleci/python:2.7-node'
     steps:
       - checkout
+      - azure-cli/install
       - run:
           name: npm install and build
           command: |
@@ -24,11 +25,10 @@ jobs:
           name: Change Name
           command: |
             cp lib/sessions.min.js session-management.js
-      - aws-s3/copy:
-          from: session-management.js
-          to: 's3://${BUCKET}/session-management.js'
-          arguments: |
-            --acl public-read
+      - run:
+          name: Upload to CDN
+          command: |
+            bash publish.sh
 
 workflows:
   version: 2
